@@ -1,4 +1,5 @@
 import { IsEmail, IsStrongPassword } from 'class-validator';
+import { Role } from 'src/enums/role.enum';
 import {
   Column,
   CreateDateColumn,
@@ -26,6 +27,9 @@ export class User {
   @IsStrongPassword()
   @Column()
   password: string;
+
+  @Column({ default: Role.USER })
+  role: string;
 
   @Column({ default: false })
   isActive: boolean;
