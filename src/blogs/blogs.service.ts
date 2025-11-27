@@ -13,4 +13,9 @@ export class BlogsService {
     const blog = this.blogRepository.create(data);
     return await this.blogRepository.save(blog);
   }
+
+  async getAllBlog() {
+    const blogs = this.blogRepository.find();
+    return blogs;
+  }
 }

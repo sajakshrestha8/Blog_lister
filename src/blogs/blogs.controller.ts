@@ -9,8 +9,9 @@ import {
 } from '@nestjs/common';
 import { CreateBlogDTO } from './dto/create-blog.dto';
 import { BlogsService } from './blogs.service';
-import { Roles } from 'src/auth/roles.decorator';
+import { Roles } from 'src/Roles/roles.decorator';
 import { Role } from 'src/enums/role.enum';
+import { RoleGuard } from 'src/Roles/roles.guard';
 import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('blogs')
@@ -23,15 +24,16 @@ export class BlogsController {
     }),
   )
   @Roles(Role.ADMIN)
-  @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard, RoleGuard)
   @Post()
   createBlogs(@Body() payload: CreateBlogDTO) {
     return this.blogService.createBlog(payload);
   }
 
   @Roles(Role.USER)
+  @UseGuards(AuthGuard, RoleGuard)
   @Get()
   getData() {
-    return 'get Information';
+    return this.blogService.getAllBlog();
   }
 }
