@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { User } from './user/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { Blog } from './blogs/blogs.entity';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { Blog } from './blogs/blogs.entity';
     }),
     UserModule,
     AuthModule,
+    CacheModule.register(),
   ],
   controllers: [AppController, BlogsController],
   providers: [AppService],
