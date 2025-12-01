@@ -1,3 +1,4 @@
 export const jwtConstants = {
-  secret: 'SAJAK',
+  SECRET: 'sajak',
+  REFRESH_TOKEN_SECRET: 'sajak refresh Token',
 };

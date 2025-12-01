@@ -10,8 +10,13 @@ import { jwtConstants } from './constants';
     UserModule,
     JwtModule.register({
       global: true,
-      secret: jwtConstants.secret,
-      signOptions: { expiresIn: '60m' },
+      secret: jwtConstants.SECRET,
+      signOptions: { expiresIn: '60s' },
+    }),
+    JwtModule.register({
+      global: true,
+      secret: jwtConstants.REFRESH_TOKEN_SECRET,
+      signOptions: { expiresIn: '7Days' },
     }),
   ],
   controllers: [AuthController],

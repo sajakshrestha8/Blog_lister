@@ -18,4 +18,9 @@ export class BlogsService {
     const blogs = this.blogRepository.find();
     return blogs;
   }
+
+  async getBlogById(id: number) {
+    const blog = this.blogRepository.findOne({ where: { id } });
+    return blog;
+  }
 }
