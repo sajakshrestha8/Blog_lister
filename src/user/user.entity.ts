@@ -31,6 +31,9 @@ export class User {
   @Column({ default: Role.USER })
   role: string;
 
+  @Column({ nullable: true })
+  refreshToken: string;
+
   @Column({ default: false })
   isActive: boolean;
 
